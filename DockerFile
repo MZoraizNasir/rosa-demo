@@ -1,4 +1,4 @@
-# Dockerfile
-FROM registry.access.redhat.com/ubi8/nginx-120
-
-COPY index.html /opt/app-root/src/index.html
+FROM nginx:alpine
+RUN rm /usr/share/nginx/html/index.html
+COPY index.html /usr/share/nginx/html/index.html
+EXPOSE 80
