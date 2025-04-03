@@ -58,18 +58,41 @@
         button:hover {
             background-color: #0056b3;
         }
+
+        .logged-in-message {
+            display: none;
+            font-size: 1.2rem;
+            color: #333333;
+            margin-top: 1rem;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- MAKE CHANGE HERE FOR DEMO -->
-        <h1>Auth Page Version 1.0</h1>
-        <form>
-            <input type="text" placeholder="Full Name" required>
+        <h1>Auth Page Version 1.1</h1>
+        <form id="signup-form">
+            <input type="text" id="full-name" placeholder="Full Name" required>
             <input type="email" placeholder="Email Address" required>
             <input type="password" placeholder="Password" required>
             <button type="submit">Sign Up</button>
         </form>
+        <div class="logged-in-message" id="logged-in-message">
+            Logged in as <span id="user-name"></span>
+        </div>
     </div>
+
+    <script>
+        const form = document.getElementById('signup-form');
+        const loggedInMessage = document.getElementById('logged-in-message');
+        const userNameSpan = document.getElementById('user-name');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            const fullName = document.getElementById('full-name').value;
+            userNameSpan.textContent = fullName; // Set the full name in the message
+            form.style.display = 'none'; // Hide the form
+            loggedInMessage.style.display = 'block'; // Show the logged-in message
+        });
+    </script>
 </body>
 </html>
